@@ -1,0 +1,1239 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+interface Elem {
+  author: User!
+  date: Time!
+  id: String!
+  type: String!
+}
+
+interface Node {
+  children: [String!]!
+  id: String!
+  meta: Map
+  sourceID: String!
+  tag: Tag
+  type: String!
+}
+
+interface Question {
+  id: String!
+  text: String!
+  type: String!
+}
+
+type AddNodeResult {
+  link: Link
+  node: Node
+}
+
+type Admin {
+  email: String
+  id: ID!
+}
+
+type AdminAndToken {
+  admin: Admin
+  token: Token
+}
+
+type Answer {
+  scaleValue: Int
+  user: User
+  yesNoValue: Boolean
+}
+
+type Attachment {
+  file: AttachmentFile
+  image: ImageFile
+  video: VideoFile
+}
+
+type AttachmentFile {
+  ext: String
+  name: String
+  path: String
+  type: String
+}
+
+type AttachmentInfo {
+  attachment: Attachment
+  id: Int
+}
+
+type Batch {
+  closed: Boolean!
+  createdAt: Time
+  csv: CSV
+  evaluation: Evaluation!
+  id: ObjectID!
+  nbDisqualified: Int!
+  nbEvaluated: Int!
+  nbItem: Int!
+  nbQualified: Int!
+  nbSelected: Int!
+  nbUnprocessed: Int!
+  tags: [String!]!
+  title: String!
+}
+
+type CSV {
+  data: [[String!]]!
+  linkColumn: LinkColumn!
+}
+
+type Client {
+  dbname: String!
+  env: String!
+  host: String!
+  id: ID!
+  name: String!
+  password: String!
+  port: String!
+  username: String!
+}
+
+type Comment {
+  author: User!
+  content: String!
+  createdAt: Time!
+  id: String!
+}
+
+type Contact {
+  adress: String
+  city: String
+  country: String
+  email: String
+  firstname: String
+  fullname: String
+  id: ID!
+  isuser: Boolean
+  jobtitle: String
+  lastname: String
+  participatedToolKits: [String]
+  phone: String
+  photo: ImageFile
+}
+
+type DeleteNodeResult {
+  deleted: Boolean!
+  links: [Link!]
+}
+
+type Document {
+  attachment: [LinkFile]
+  feedback: [FeedBack]
+  html: String
+  id: ID!
+  nbfeedback: Int
+  nbnewfeedback: Int
+  owner: User!
+  steps: [Step]
+  title: String
+  tools: [Tool]
+  updatedat: Time!
+}
+
+type DocumentList {
+  knowledges: [Document]
+  total: Int
+}
+
+type Evaluation {
+  evaluations: EvaluationStep!
+  id: ObjectID!
+  qualifications: EvaluationStep!
+  title: String!
+}
+
+type EvaluationStep {
+  questions: [Question!]!
+  users: [User!]!
+}
+
+type Event {
+  ToolKit: ToolKit
+  action_type: String!
+  document: Document
+  expert: Contact
+  feedback: FeedBack
+  id: String!
+  object: Map
+  sent: [String]
+  step: Step
+  tool: Tool
+  user: User
+}
+
+type Expert {
+  review: Boolean!
+  user: User!
+}
+
+type FeedBack {
+  ToolKit: ToolKit
+  created_at: Time!
+  documentid: String
+  files: [Attachment]
+  html: String
+  id: ID!
+  owner: User!
+  step: Step
+  tool: Tool
+}
+
+type File {
+  content: String!
+  id: Int!
+  name: String!
+}
+
+type FileElem implements Elem {
+  attachment: Attachment!
+  author: User!
+  date: Time!
+  id: String!
+  type: String!
+}
+
+type FileTest {
+  ext: String!
+  path: String!
+}
+
+type GateProcess implements Node {
+  children: [String!]!
+  description: String
+  experts: [Expert!]
+  id: String!
+  invitations: [InvitationGate!]
+  meta: Map
+  sourceID: String!
+  tag: Tag
+  title: String
+  type: String!
+}
+
+type Goal {
+  comments: [Comment!]
+  description: String!
+  elems: [Elem!]
+  experts: [User!]
+  id: String!
+  neverEdited: Boolean!
+  sourceID: String!
+  status: Status
+  tags: [String!]!
+  title: String!
+  tools: [Tool!]
+  validate: Boolean!
+}
+
+type Groupe {
+  id: ID!
+  memberlist: [User]
+  members: [User]
+  name: String!
+  owner: User
+}
+
+type ImageFile {
+  ext: String
+  height: Int
+  name: String
+  path: String
+  width: Int
+}
+
+type IntegrationClient {
+  apikey: String
+  authorized: Boolean
+  background: String
+  background_ext: String
+  description: String
+  link: String
+  photo: String
+  photo_ext: String
+  scope: Map
+  title: String
+}
+
+type Invitation {
+  active: Boolean!
+  author: User!
+  code: String
+  email: String!
+  id: ID!
+  roleIds: [ObjectID!]
+  roles: [Role!]!
+}
+
+type InvitationGate {
+  email: String!
+  shareToken: String!
+}
+
+type Item {
+  batch: Batch!
+  date: Time
+  evaluation: Evaluation!
+  id: ObjectID!
+  kpis: [KeyValue]
+  others: [KeyValue]
+  qualify: Validate
+  selected: Boolean!
+  text: String!
+  user: String!
+  validates: [Validate!]!
+}
+
+type IterateInfo {
+  author: User
+  email: String
+  html: String
+  id: ID!
+}
+
+type KeyValue {
+  key: String!
+  value: Any!
+}
+
+type Link {
+  childID: String!
+  parentID: String!
+}
+
+type LinkColumn {
+  date: Int!
+  kpis: [KeyValue]
+  others: [KeyValue]
+  text: Int!
+  user: Int!
+}
+
+type LinkElem implements Elem {
+  author: User!
+  date: Time!
+  id: String!
+  link: String!
+  type: String!
+}
+
+type LinkFile {
+  attachment: Attachment
+  link: LinkPreview
+}
+
+type LinkPreview {
+  canonicalurl: String
+  description: String
+  descriptionesc: String
+  extension: String
+  iframe: String
+  images: String
+  pageurl: String
+  title: String
+  titlessc: String
+  url: String
+  video: String
+}
+
+type ListBatch {
+  batchs: [Batch!]!
+  total: Int!
+}
+
+type ListItem {
+  items: [Item!]!
+  total: Int!
+}
+
+type ListProject {
+  projects: [Project]!
+  total: Int!
+}
+
+type ListToolKit {
+  toolkits: [ToolKit]!
+  total: Int!
+}
+
+type Module {
+  color: String
+  ext: String
+  id: String!
+  input: Boolean
+  name: String!
+  path: String!
+  photo: String
+}
+
+type Mutation {
+  abortProject(aborted: Boolean!, projectID: ObjectID!): Project!
+  abortToolKit(html: String!, toolkitId: [String!]): Boolean!
+  activateTool(active: Boolean!, toolId: String!): Tool!
+  addClient(formClient: FormClient!): Client!
+  addSupervisorsToGate(expertIDs: [String!], invitationEmails: [String!], projectID: ObjectID!): Boolean!
+  addGoal(goalForm: GoalForm!, processID: ObjectID!, stepID: String!): Goal!
+  addGoalComment(commentForm: CommentForm!, goalID: String!, projectID: ObjectID!): Comment
+  addGoalLink(goalID: String!, link: String!, projectID: ObjectID!): Goal
+  addInHouseClient(formClient: FormInHouseClient!): Client!
+  addMicrosoftChannel(channelID: String!, projectID: ObjectID!): Project
+  addNode(nodeForm: NodeForm!, processID: ObjectID!): AddNodeResult!
+  addNodeBetween(nodeFormBetween: NodeFormBetween!, nodesMeta: [NodeMeta!]!, processID: ObjectID!): Process!
+  addStepToTool(formStep: FormStep!): Step!
+  addUserToGroup(groupId: String!, userId: String!): Boolean!
+  answerQuestion(answerForm: AnswerForm!, itemID: ObjectID!, questionID: String!): Item
+  attachGoal(goalID: String!, processID: ObjectID!, stepID: String!): Goal!
+  authorizeIntegration(apikey: String!): String
+  changePassword(current: String!, new: String!, repeat: String!): Boolean!
+  changeProjectNode(nodeID: String!, projectID: ObjectID!): Project
+  changeStep(nextStep: String!, toolkitId: String!): Boolean!
+  closeBatch(batchID: ObjectID!, closed: Boolean!): Batch!
+  confirmUser(token: String!): Boolean!
+  createBatch(batchForm: BatchForm!): Batch
+  createEvaluation(evaluationForm: EvaluationForm!): Evaluation
+  createExpert(photo: Upload, toolId: String, userForm: ContactForm, userId: String): Contact
+  createFeedBack(feedback: FeedBackForm): FeedBack
+  createGroup(name: String!): Groupe
+  createInvitationCode(invitationForm: InvitationForm!): Boolean!
+  createKnowledge(document: DocumentForm): Document
+  createProcess(processForm: ProcessForm!): Process!
+  createProject(projectForm: ProjectForm!): Project
+  createSkill(skill: SkillForm): Boolean!
+  createSso(token: FormSso!): UserAndToken!
+  createTool(toolForm: ToolForm!): Tool!
+  createToolKit(files: [AttachmentInput], toolkit: ToolKitForm!): ToolKit
+  createUser(email: String!, invitationCode: String, language: String, password: String!): UserAndToken!
+  deleteAdminModule(moduleId: String!): Boolean!
+  deleteBatch(batchID: ObjectID!): Boolean!
+  deleteElem(elemID: String!, goalID: String!, projectID: ObjectID!): Goal
+  deleteEvaluation(evaluationID: ObjectID!): Boolean!
+  deleteFeedBack(feedbackId: String!): Boolean!
+  deleteGoal(goalID: String!, processID: ObjectID!, stepID: String!): Process!
+  deleteGoalComment(commentID: String!, goalID: String!, projectID: ObjectID!): Boolean!
+  deleteGroup(id: String!): Boolean!
+  deleteInvitation(code: String!): Boolean!
+  deleteKnowledge(documentId: String!): Boolean!
+  deleteLink(childID: String!, parentID: String!, processID: ObjectID!): Process!
+  deleteMicrosoftChannel(channelID: String!, projectID: ObjectID!): Project
+  deleteNode(nodeID: String!, processID: ObjectID!): Process!
+  deleteProcess(processID: ObjectID!): Boolean!
+  deleteProject(projectID: ObjectID): Project
+  deleteRole(roleId: ObjectID!): Boolean!
+  deleteToolKit(toolkitId: [String!]): Boolean!
+  deleteUser(target: String, userId: String!): Boolean!
+  duplicateProcess(processID: ObjectID!): Process!
+  duplicateStepInTool(stepId: String!, toolId: String!): Step!
+  duplicateTool(toolId: String!): Tool!
+  duplicateToolTemplate(language: String, templateID: String!): Tool!
+  editEvaluation(evaluationForm: EvaluationForm!, evaluationID: ObjectID!): Evaluation
+  editFeedBack(feedback: FeedBackEdit): FeedBack
+  editGoal(goalForm: GoalForm!, goalID: String!, processID: ObjectID!): Goal!
+  editGroup(id: String!, name: String!): Groupe
+  editKnowledge(document: DocumentForm, documentId: String!): Document
+  editNode(editNodeForm: [EditNodeForm!], processID: ObjectID!): [Node!]
+  editPlatform(form: PlatformInput!): Platform!
+  editProcess(editForm: EditProcessForm!, processID: ObjectID!): Process!
+  editProject(projectForm: ProjectForm!, projectID: ObjectID!): Project
+  editProjectGoal(goalForm: GoalForm!, goalID: String!, projectID: ObjectID!, stepID: String!): Project
+  editSetupData(setupData: Map!, stepId: String!, toolId: String!): Boolean!
+  editStep(formStepEdit: FormStepEdit!): Step!
+  editTool(toolForm: ToolForm!, toolId: String!): Tool!
+  editToolKit(files: [AttachmentInput], toolkit: ToolKitEdit, toolkitId: String!): ToolKit
+  finishToolKit(html: String!, toolkitId: [String!]): Boolean!
+  getMyData: Boolean!
+  hideTool(toolId: String!): Tool!
+  importAdminModule(color: String, file: Upload!, input: Boolean!, photo: String, photo_ext: String, title: String!): Boolean!
+  importAdminTemplate: Boolean!
+  importModule(color: String, file: Upload!, input: Boolean!, photo: String, photo_ext: String, title: String!, type: String!): Boolean!
+  importToolTemplate(language: String): Boolean!
+  inviteUserToBatch(batchID: ObjectID!, invitationForm: [BatchInvitationForm]!): Batch
+  joinBatch(batchID: ObjectID!): Batch
+  linkColumn(batchID: ObjectID!, linkColumnForm: LinkColumnForm!): Batch
+  linkExpert(expertId: String!, toolId: String!): Boolean!
+  linkNode(childID: String!, parentID: String!, processID: ObjectID!): AddNodeResult!
+  login(email: String!, password: String!): UserAndToken!
+  loginAdmin(email: String!, password: String!): AdminAndToken!
+  orderGoals(goalID: String!, position: Int!, processID: ObjectID!, stepID: String!): Process!
+  qualifiedItem(itemID: ObjectID!, qualified: Boolean): Item
+  refresh(token: String!): UserAndToken!
+  refreshAdmin(token: String!): AdminAndToken!
+  removeAuthorizationForIntegration(apikey: String!): Boolean!
+  removeExpert(expertId: String!): Boolean!
+  removeExpertsGate(expertIDs: [String!], invitationEmails: [String!], projectID: ObjectID!): Boolean!
+  removeStepFromTool(stepId: String!, toolId: String!): Boolean!
+  removeUserBatch(batchID: ObjectID!, userID: String!): Batch
+  removeUserFromGroup(groupId: String!, userId: String!): Boolean!
+  requestPassword(email: String!): Boolean!
+  resendEmailConfirm: Boolean!
+  resetPassword(password: String!, token: String!): Boolean!
+  restoreToolKit(toolkitId: [String!]): Boolean!
+  reviewGoal(goalID: String!, projectID: ObjectID!, review: Boolean!): Project!
+  saveData(data: Map!, stepId: String!, toolkitId: String!): Boolean!
+  saveProfile(userInfo: UserForm!): User!
+  selectItem(itemID: ObjectID!, selected: Boolean!): Item
+  sendMail(message: String!, stepId: String!, to: String!, toolkitId: String!): Boolean!
+  setGoalStatus(goalID: String!, projectID: ObjectID!, statusID: String!): Goal
+  setIterateFeedback(comment: [IterateForm]!, stepId: String!, toolkitId: String!): Boolean!
+  setRole(role: RoleForm!): Role!
+  setRolesToUser(roleIds: [ObjectID!]!, userId: String!): Boolean!
+  setStepNotice(information: String, stepId: String!, toolkitId: String!): Boolean!
+  setToolKitLabel(label: String!, toolkitId: String!): Boolean!
+  shareProject(projectID: ObjectID!, visibility: String!): String!
+  shareToolKit(toolkitId: String!, visibility: String!): String!
+  shareToolKitStep(invitations: [InviteForm!]!, stepId: String!, toolkitId: String!, userIds: [String!]!): UsersAndEmails!
+  unlinkExpert(expertId: String!, toolId: String!): Boolean!
+  unlinkKnowledge(documentId: String!, stepId: String!): Boolean!
+  updateAdminModule(file: Upload!, name: String!): Boolean!
+  updateModule(file: Upload!, id: String!): Boolean!
+  updateUserBatch(batchID: ObjectID!, steps: [String!], userID: String!): Batch
+  uploadCSV(batchID: ObjectID!, file: Upload, id: Int): Batch
+  uploadFile(file: Upload, id: Int): AttachmentInfo
+  uploadGoalFile(file: Upload, goalID: String!, id: Int, projectID: ObjectID!): Goal
+  uploadMultipleFiles(files: [Upload]): [Attachment]
+  uploadProfilePicture(photo: Upload): ImageFile
+  uploadToolFile(file: Upload, id: Int, toolId: String!): AttachmentInfo
+  validateItem(itemID: ObjectID!, validated: Boolean!): Item
+}
+
+type Photo {
+  ext: String
+  path: String
+  type: String
+}
+
+type Platform {
+  analytic_authorization: Boolean!
+  base_url: String!
+  defaultLanguage: String
+  domains: [String!]!
+  istoolkit_visible: Boolean!
+  languages: [String]
+  name: String!
+  nb_document: Int!
+  nb_project: Int!
+  nb_tool: Int!
+  nb_toolkit: Int!
+  status: [Status!]!
+}
+
+type Process {
+  active: Boolean!
+  goals: [Goal!]
+  id: ObjectID!
+  links: [Link!]
+  meta: Map
+  nodes: [Node!]!
+  tags: [Tag!]!
+  title: String!
+}
+
+type Project {
+  aborted: Boolean!
+  deleted: Boolean
+  description: String
+  files: [Attachment]
+  id: ObjectID!
+  leader: User
+  members: [User]
+  microsoftChannelIDs: [String!]
+  node: Node
+  nodes: [Node]
+  process: Process
+  processID: ObjectID
+  share_token: String
+  share_token_visibility: String
+  tags: [String!]
+  title: String
+}
+
+type ProjectByTag {
+  color: String!
+  name: String!
+  projects: [Project!]!
+}
+
+type Query {
+  Ping: Boolean!
+  TestPermission: Boolean!
+  checkUsersAndEmails(emails: [String!]!, userIds: [String!]!): UsersAndEmails!
+  findData(stepId: String!, toolkitId: String!): Map
+  getBatch(batchID: ObjectID!): Batch
+  getGoal(goalID: String!, projectID: ObjectID!): Goal!
+  getIntegrationByApiKey(apikey: String!): IntegrationClient
+  getIntegrationEvents(action: String!): [Event]
+  getInvitation(code: String!): Invitation!
+  getKnowledgeById(knowledgeId: String!): Document
+  getKnowledges(limit: Int = 10, page: Int = 1, search: String): DocumentList
+  getModule(id: String!): Module!
+  getPlatform: Platform!
+  getProcess(processID: ObjectID!): Process
+  getProject(projectID: ObjectID!): Project!
+  getRole(roleId: ObjectID!): Role!
+  getSkill(filter: String): [Skill]
+  getStatus: [Status!]!
+  getStep(stepId: String!): Step!
+  getTemplate(language: String, templateID: String!): Tool!
+  getTool(toolId: String!): Tool!
+  getUserByEmail(email: String!): User
+  getUserById(id: String!): User
+  getUserFromGroup(filter: String, groupId: String!): [User]
+  getUserInfoByShareToken(token: String!): ShareToken!
+  knowledgesByStep(stepId: String!): [Document]
+  listAdminModule: [Module]!
+  listBatch(query: QueryList!): ListBatch
+  listElem(goalID: String!, projectID: ObjectID!): [Elem!]!
+  listEvaluation(limit: Int = 10, page: Int = 1): [Evaluation]
+  listExpert(limit: Int = 10, page: Int = 1, search: String): [Contact]
+  listGoalComment(goalID: String!, projectID: ObjectID!): [Comment!]!
+  listGroup(filter: String, limit: Int = 10, page: Int = 1): [Groupe]
+  listIntegrations: [IntegrationClient]
+  listInvitation: [Invitation!]!
+  listItems(batchID: ObjectID!, query: QueryList!): ListItem
+  listModule: [Module]!
+  listProcess: [Process]
+  listProject(projectQuery: QueryList!): ListProject!
+  listProjectByStage(processID: ObjectID!): [ProjectByTag]!
+  listRoles: [Role]
+  listSkill(limit: Int = 10, page: Int = 1): [Skill]
+  listTemplate(language: String): [Tool!]!
+  listTool(draft: Boolean): [Tool]!
+  me: User!
+  members(filter: String, limit: Int = 10, page: Int = 1): [User]!
+  previewLink(link: String): LinkPreview
+  toolkitById(toolkitId: String!): ToolKit!
+  toolkitList(goalID: String!, projectID: ObjectID!, query: QueryList!): ListToolKit!
+  toolkitListByTool(toolID: String!): [ToolKit]!
+  toolkitStepByStatus(status: String!, toolkitId: String!): [Step]!
+}
+
+type QuestionScale implements Question {
+  answers: [Answer!]!
+  id: String!
+  text: String!
+  type: String!
+}
+
+type QuestionYesNo implements Question {
+  answer: Answer
+  id: String!
+  text: String!
+  type: String!
+}
+
+type Role {
+  editable: Boolean
+  id: ObjectID
+  name: String!
+  permissions: Map
+}
+
+type ShareToken {
+  email: String!
+  name: String!
+  token: String!
+}
+
+type Skill {
+  custom: Boolean
+  id: String!
+  text: [SkillObject]
+}
+
+type SkillObject {
+  language: String!
+  value: String!
+}
+
+type Status {
+  color: String!
+  hasElement: Boolean!
+  id: String!
+  isDefault: Boolean!
+  isGate: Boolean!
+  isValidate: Boolean!
+  name: String!
+}
+
+type Step {
+  completed: Boolean!
+  connectedUsers: [User!]
+  created_at: Time
+  created_by: User
+  description: String
+  disabled: Boolean
+  duration: Int
+  feedback: [IterateInfo]
+  id: ID!
+  module: Module!
+  notice: String
+  owner: Groupe
+  setup_data: Map
+  stats: Map!
+  status: String
+  title: String
+  toolkits: [ToolKit]
+  updated_at: Time
+  updated_by: User
+  usersave: [String]
+}
+
+type StepProcess implements Node {
+  children: [String!]!
+  description: String
+  goals: [String!]
+  id: String!
+  meta: Map
+  projectGoals: [Goal!]
+  sourceID: String!
+  tag: Tag
+  title: String
+  type: String!
+}
+
+type Subscription {
+  subscribeGoal(goalID: String!): Goal!
+  subscribeModuleData(stepId: String!, toolkitId: String!): Map!
+  subscribeProject(projectID: ObjectID!): Project!
+  subscribeToolKitById(toolkitID: String!): ToolKit!
+}
+
+type Tag {
+  color: String!
+  name: String!
+}
+
+type Template {
+  active: Boolean!
+  data: Map!
+  id: ObjectID!
+  title: String!
+  version: String!
+}
+
+type Token {
+  access_token: String
+  expires_at: Int
+  refresh_token: String
+}
+
+type Tool {
+  attachment: [Attachment]
+  completed: Boolean!
+  description: String
+  disable: Boolean!
+  draft: Boolean!
+  experts: [Contact]
+  id: ID!
+  nb_done: Int!
+  picture: String
+  steps: [Step!]!
+  template: Boolean!
+  template_id: String!
+  title: String
+  toolkits: [ToolKit]
+}
+
+type ToolKit {
+  currentStep: Step
+  currentlabel: String
+  description: String
+  files: [Attachment]
+  goal: Goal
+  goalID: String!
+  id: ID!
+  label: String!
+  leader: User!
+  members: [User]
+  project: Project
+  projectID: ObjectID!
+  reason_html: String
+  share_token: String
+  share_token_visibility: String
+  steplist: [Step!]!
+  title: String
+  tool: Tool
+  updated_at: Time!
+}
+
+type ToolKitElem implements Elem {
+  author: User!
+  date: Time!
+  id: String!
+  toolkit: ToolKit!
+  toolkitID: ID!
+  type: String!
+}
+
+type ToolKitFile {
+  name: String
+  path: String!
+  type: String
+}
+
+type User {
+  adress: String
+  city: String
+  confirmed: Boolean
+  country: String
+  email: String
+  firstname: String
+  fullname: String
+  groupe: [Groupe]
+  id: ID!
+  jobtitle: String
+  language: String
+  lastname: String
+  learnskill: [Skill]
+  masterskill: [Skill]
+  permissions: Map
+  phone: String
+  photo: ImageFile
+  roles: [Role]
+}
+
+type UserAndToken {
+  token: Token
+  user: User
+}
+
+type UsersAndEmails {
+  emails: [String!]!
+  users: [User!]!
+}
+
+type Validate {
+  user: User
+  value: Boolean
+}
+
+type VideoFile {
+  cover: ImageFile
+  ext: String
+  name: String
+  path: String
+}
+
+input AnswerForm {
+  scaleValue: Int
+  yesNoValue: Boolean
+}
+
+input AttachmentInput {
+  file: FileInput
+  image: ImageInput
+  video: VideoInput
+}
+
+input BatchForm {
+  evaluationID: ObjectID!
+  tags: [String!]!
+  title: String!
+}
+
+input BatchInvitationForm {
+  steps: [String!]
+  userID: String!
+}
+
+input CommentForm {
+  content: String!
+}
+
+input ContactForm {
+  adress: String
+  city: String
+  country: String
+  ext: String
+  firstname: String
+  jobtitle: String
+  lastname: String
+  mail: String
+  phone: String
+  url: String
+}
+
+input DocumentForm {
+  attachment: [KnowledgeAttachment]
+  html: String
+  stepids: [String]
+  title: String
+}
+
+input EditNodeForm {
+  description: String
+  has_meta: Boolean!
+  id: String!
+  meta: Map
+  tagForm: TagForm
+  title: String
+}
+
+input EditProcessForm {
+  active: Boolean
+  meta: Map
+  title: String
+}
+
+input ElemForm {
+  id: ID
+  type: String!
+  url: String
+}
+
+input EvaluationForm {
+  evaluations: [QuestionForm!]!
+  qualifications: [QuestionForm!]!
+  title: String!
+}
+
+input ExpertForm {
+  adress: String
+  email: String!
+  expertId: String
+  firstname: String
+  fullname: String
+  jobtitle: String
+  lastname: String
+  phone: String
+  photo: ImageInput
+  userId: String
+}
+
+input FeedBackEdit {
+  files: [KnowledgeAttachment]
+  html: String
+  id: String!
+}
+
+input FeedBackForm {
+  ToolKitId: String!
+  documentid: String!
+  files: [KnowledgeAttachment]
+  html: String
+  stepId: String!
+}
+
+input FileInput {
+  ext: String
+  name: String
+  path: String
+  type: String
+}
+
+input FormClient {
+  base_url: String!
+  dbname: String!
+  domains: [String!]!
+  env: String!
+  host: String!
+  name: String!
+  password: String!
+  port: String!
+  username: String!
+}
+
+input FormInHouseClient {
+  base_url: String!
+  domains: [String!]!
+  env: String!
+  name: String!
+  provider: String!
+}
+
+input FormSso {
+  platformname: String
+  token: String
+}
+
+input FormSsoUser {
+  Coverurl: String
+  age: String
+  avatarurl: String
+  city: String
+  country: String
+  description: String
+  email: String
+  firstname: String
+  gender: String
+  jobcompany: String
+  jobtitle: String
+  language: String
+  lastname: String
+  uid: String
+}
+
+input FormStep {
+  completed: Boolean!
+  description: String
+  document: [String]
+  duration: Int
+  groupId: String
+  moduleId: String!
+  ownerId: String
+  position: Int
+  setupData: Map
+  stats: [String!]
+  title: String
+  toolId: String!
+}
+
+input FormStepEdit {
+  completed: Boolean!
+  description: String
+  duration: Int
+  groupId: String
+  ownerId: String
+  position: Int
+  setupData: Map
+  stats: [String!]
+  stepId: String!
+  title: String
+  toolId: String!
+}
+
+input FormStepGroup {
+  title: String
+  toolId: String!
+}
+
+input FormStepGroupEdit {
+  groupId: String!
+  position: Int
+  title: String
+  toolId: String!
+}
+
+input GoalForm {
+  description: String
+  has_tags: Boolean!
+  has_tools: Boolean!
+  tags: [String!]
+  title: String
+  tools: [String!]
+}
+
+input ImageInput {
+  ext: String
+  height: Int
+  name: String
+  path: String
+  width: Int
+}
+
+input InvitationForm {
+  emails: [String!]!
+  roleIds: [ObjectID!]
+}
+
+input InviteForm {
+  email: String!
+  name: String
+}
+
+input IterateForm {
+  email: String!
+  html: String!
+}
+
+input KeyValueForm {
+  key: String!
+  value: Int!
+}
+
+input KnowledgeAttachment {
+  attachment: AttachmentInput
+  link: LinkPreviewInput
+}
+
+input LinkColumnForm {
+  date: Int
+  kpis: [KeyValueForm]
+  others: [KeyValueForm]
+  text: Int
+  user: Int
+}
+
+input LinkPreviewInput {
+  canonicalurl: String
+  description: String
+  descriptionesc: String
+  extension: String
+  iframe: String
+  images: String
+  pageurl: String
+  title: String
+  titlessc: String
+  url: String
+  video: String
+}
+
+input NodeForm {
+  description: String
+  meta: Map
+  parentID: String
+  tagForm: TagForm
+  title: String
+  type: String!
+}
+
+input NodeFormBetween {
+  childrenID: String!
+  description: String
+  meta: Map
+  parentID: String!
+  tagForm: TagForm
+  title: String
+  type: String!
+}
+
+input NodeMeta {
+  meta: Map!
+  nodeID: String!
+}
+
+input PlatformInput {
+  analytic_authorization: Boolean
+  base_url: String!
+  defaultLanguage: String
+  domains: [String!]!
+  istoolkit_visible: Boolean!
+  languages: [String!]
+  name: String!
+}
+
+input ProcessForm {
+  meta: Map
+  title: String!
+}
+
+input ProcessGateForm {
+  parentID: String
+}
+
+input ProjectForm {
+  description: String
+  files: [AttachmentInput]
+  members: [String!]!
+  processID: ObjectID
+  stepID: String
+  tags: [String!]
+  title: String
+}
+
+input ProjectQuery {
+  field: String
+  filters: Map!
+  isAsc: Boolean
+  limit: Int! = 10
+  page: Int! = 1
+}
+
+input QueryList {
+  field: String
+  filters: Map!
+  isAsc: Boolean
+  limit: Int! = 10
+  page: Int! = 1
+  sort: Map
+}
+
+input QuestionForm {
+  text: String!
+  type: String!
+}
+
+input RoleForm {
+  id: ObjectID
+  name: String!
+  permissions: [String!]
+}
+
+input SkillForm {
+  text: [SkillInput]
+}
+
+input SkillInput {
+  language: String!
+  value: String!
+}
+
+input TagForm {
+  color: String!
+  name: String!
+}
+
+input ToolForm {
+  description: String
+  experts: [ExpertForm]
+  has_experts: Boolean
+  picture: String
+  title: String
+}
+
+input ToolKitEdit {
+  description: String
+  title: String
+}
+
+input ToolKitForm {
+  description: String
+  goalID: String!
+  leader: String
+  members: [String!]!
+  project_id: ObjectID!
+  step: String
+  title: String!
+  tool_id: String!
+}
+
+input ToolKitStepStatus {
+  status: String!
+  stepid: String!
+}
+
+input UploadFile {
+  file: Upload!
+  id: Int!
+}
+
+input UserForm {
+  adress: String
+  city: String
+  country: String
+  firstname: String
+  jobtitle: String
+  language: String
+  lastname: String
+  learnskill: [String]
+  masterskill: [String]
+  phone: String
+  photo: ImageInput
+}
+
+input VideoInput {
+  cover: ImageInput
+  ext: String
+  name: String
+  path: String
+}
+
+
+scalar Upload
+
+scalar Any
+
+scalar Map
+
+scalar Time
+
+scalar ObjectID

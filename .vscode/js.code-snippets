@@ -1,0 +1,32 @@
+{
+	"Declare constant": {
+		"prefix": "c",
+		"body": [
+			"const ${1:key} = ${2:value};"
+		],
+		"description": "Declare constant"
+	},
+	"Parameters from Props": {
+		"prefix": "${",
+		"body": [
+			"${props => props.theme.${1:parameter}};"
+		],
+		"description": "Give parameters from Props in styled components"
+	},
+	"Set props to styled component": {
+		"prefix": "${",
+		"body": [
+			"${props => props.theme.${1:parameter}};"
+		],
+		"description": "${props => props.theme.${1:parameter}};"
+	},
+	"Media queries": {
+		"prefix": "@m",
+		"body": [
+			"@media (max-width: ${1}) {",
+    		"${2}",
+			"}"
+		],
+		"description": "Set Up media querie"
+	}
+}

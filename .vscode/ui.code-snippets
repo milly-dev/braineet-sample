@@ -1,0 +1,259 @@
+{
+	"UI: Accordion": {
+		"prefix": "accordion",
+		"body": [
+			"<Accordion>",
+			"    {${1:data}.map(child => (",
+			"        <Accordion.Child key={child.id} label={child.id}>",
+			"            <Accordion.Head>${2}</Accordion.Head>",
+			"            <Accordion.Body>${3}</Accordion.Body>",
+			"        </Accordion.Child>",
+			"    ))}",
+			"</Accordion>"
+		],
+		"description": "UI: Accordion"
+	},
+	"UI: Alert": {
+		"prefix": "alert",
+		"body": [
+			"<Alert icon={${1}} isClosable={${2}} color={${3}}>",
+			"    {${4}}",
+			"</Alert>"
+		],
+		"description": "UI: Alert"
+	},
+	"UI: Avatar": {
+		"prefix": "avatar",
+		"body": [
+			"<Avatar",
+			"    name={${1}}",
+			"    size={${2}}",
+			"    path={${3}}",
+			"    ext={${4}}",
+			"    id={${5}}",
+			"    iconName={${6}}",
+			"    iconColor={${7}}",
+			"/>"
+		],
+		"description": "UI: Avatar"
+	},
+	"UI: Badge": {
+		"prefix": "badge",
+		"body": [
+			"<Badge",
+			"    isSolid={isSolid}",
+			"    iconBefore={iconBefore}",
+			"    iconAfter={iconAfter}",
+			"    size={size}",
+			"    color={color}",
+			">",
+			"    {${1}}",
+			"</Badge>"
+		],
+		"description": "UI: Badge"
+	},
+	"UI: Box": {
+		"prefix": "box",
+		"body": [
+			"<Box>{${1}}</Box>"
+		],
+		"description": "UI: Box"
+	},
+	"UI: Button": {
+		"prefix": "button",
+		"body": [
+			"<Button",
+			"    styleType=\"solid\"",
+			"    color=\"primary\"",
+			"    icon=\"\"",
+			"    size=\"medium\"",
+			">",
+			"    ${1}",
+			"</Button>"
+		],
+		"description": "UI: Button"
+	},
+	"UI: ButtonUpload": {
+		"prefix": "buttonupload",
+		"body": [
+			"<ButtonUpload",
+			"    disabled={${1:disabled}}",
+			"    color={${2:primary}}",
+			"    type={${3:solid}}",
+			"    size={${4:size}}",
+			"    icon={${5:icon}}",
+			"    direction={${6:left/right}}",
+			"    hasShadow={${true/false}",
+			"    name=\"${7:test}\"",
+			"    accept=\"*\"",
+			"    onChange={() => {${8}}}",
+			">",
+			"${9}",
+			"</ButtonUpload>"
+		],
+		"description": "UI: ButtonUpload"
+	},
+	"UI: CardUserRow": {
+		"prefix": "carduserrow",
+		"body": [
+			"<CardUserRow user={${1:user}>",
+			"    <Button icon=${2:icon} />",
+			"</CardUserRow>"
+		],
+		"description": "UI: CardUserRow"
+	},
+	"UI: Carousel": {
+		"prefix": "carousel",
+		"body": [
+			"<Carousel title=\"${1:title}\">",
+			"    <div></div>",
+			"    <div></div>",
+			"</Carousel"
+		],
+		"description": "UI: Carousel"
+	},
+	"UI: DatePicker": {
+		"prefix": "datepicker",
+		"body": [
+			"<DatePicker",
+			"    name=\"test\"",
+			"    isRange",
+			"    placeholder={placeholder}",
+			"    startDatePlaceholderText={placeholder}",
+			"    endDatePlaceholderText={placeholder}",
+			"    isOutsideRange={() => false}",
+			"    keepOpenOnDateSelect={false}",
+			"    disabled={disabled}",
+			"    numberOfMonths={numberOfMonths}",
+			"    value={value}",
+			"    onChange={changeValue}",
+			"/>"
+		],
+		"description": "UI: DatePicker"
+	},
+	"UI: Divider": {
+		"prefix": "divider",
+		"body": [
+			"<Divider width=\"${1:width}\" height=\"${2:height}\" />"
+		],
+		"description": "UI: Divider"
+	},
+	"UI: Icon": {
+		"prefix": "icon",
+		"body": [
+			"<Icon",
+			"    name=\"${1:name}\"",
+			"    size=\"${2:small/big}\"",
+			"    color=\"${3:#}\"",
+			"/>"
+		],
+		"description": "UI: Icon"
+	},
+	"UI: Input": {
+		"prefix": "input",
+		"body": [
+			"<Input",
+			"    name=\"test\"",
+			"    placeholder=${2:placeholder}",
+			"    type=${3:type}",
+			"    value={value}",
+			"    onChange={onChange}",
+			"    disabled={disabled}",
+			"/>"
+		],
+		"description": "UI: Icon"
+	},
+	"UI: Link": {
+		"prefix": "link",
+		"body": [
+			"<Link href=\"${1:href}\" size={2:size}>",
+			"    ${3}",
+			"</Link>"
+		],
+		"description": "UI: Link"
+	},
+	"UI: Modal": {
+		"prefix": "modal",
+		"body": [
+			"<ButtonModal onClick={toggleModal1} type=\"button\">",
+			"    ${1}",
+			"</ButtonModal>",
+			"<Modal",
+			"    title=\"${2:title}\"",
+			"    isActive={itemModalOpen1}",
+			"    buttonColor=\"secondaryLight\"",
+			"    icon=\"add\"",
+			"    iconColor=\"action\"",
+			"    handleClose={() => setItemModalOpen1(false)}",
+			"    handleConfirm={() => setItemModalOpen1(false)}",
+			"    hasIconClose",
+			"    targetDom=\"root\"",
+			">",
+			"Hello",
+			"</Modal>"
+		],
+		"description": "UI: Modal"
+	},
+	"UI: Pagination": {
+		"prefix": "pagination",
+		"body": [
+			"const [${1:activePage}, setPage] = useState(1);",
+			"const [${4:value}}, setValue] = useState('10');",
+			"const onChange = v => {",
+			"    setValue(v);",
+			"};",
+			"<Pagination",
+			"    pages={${2:pages}}",
+			"    activePage={${1:activePage}}",
+			"    onChange={(event, page) => setPage(page)}",
+			"    withTextButton={${3:boolean}}",
+			"    optionsSelectRowsByPage={[",
+			"        { value: '10', label: '10'},",
+			"        { value: '20', label: '20'},]}",
+			"    valueSelectRowsByPage={${4:value}}",
+			"    onChangeRowsByPage={onChange}",
+			"/>"
+		],
+		"description": "UI: Pagination"
+	},
+	"UI: Select": {
+		"prefix": "select",
+		"body": [
+			"const [value, setValue] = useState(null);",
+			"const onChange = v => {",
+			"    setValue(v);",
+			"};",
+			"<Select",
+			"    disabled={${1:true/false}}",
+			"    iconPosition={${2:left/right}}",
+			"    options={$3:{[{ value: 'first', label: 'Premier choix', icon: 'base' },]}}",
+			"    placeholder=${4:placeholder}",
+			"    value={value}",
+			"    onChange={onChange}",
+			"/>"
+		],
+		"description": "UI: Select"
+	},
+	"UI: Spinner": {
+		"prefix": "spinner",
+		"body": [
+			"<Spinner />"
+		],
+		"description": "UI: Spinner"
+	},
+	"UI: PopOver": {
+		"prefix": "popover",
+		"body": [
+			"<PopOver",
+			"  content={<${1:content}/>}",
+			"  widthContent={500}",
+			"  heightContent=\"auto\"",
+			"  trigger=${2:click/hover}",
+			"  position=${3:top-left...}",
+			">",
+			"  <div>Hover me</div>",
+			"</PopOver>",
+		],
+		"description": "UI: PopOver"
+	}
+}

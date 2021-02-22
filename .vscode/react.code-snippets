@@ -1,0 +1,58 @@
+{
+	"Import React": {
+		"prefix": "r",
+		"body": [
+			"import React from 'react';"
+		],
+		"description": "Import React"
+	},
+	"Import PropTypes": {
+		"prefix": "p",
+		"body": [
+			"import PropTypes from 'prop-types';"
+		],
+		"description": "Import PropTypes"
+	},
+	"Import BraineetUI": {
+		"prefix": "imui",
+		"body": [
+			"import { ${1:Box} } from '@braineet/ui';"
+		],
+		"description": "Import BraineetUI"
+	},
+	"Import withTranslation": {
+		"prefix": "tr",
+		"body": [
+			"import { withTranslation } from '${1}';"
+		],
+		"description": "Import withTranslation"
+	},
+	"useRef": {
+		"prefix": "ur",
+		"body": [
+			"const ${1:name} = useRef();"
+		],
+		"description": "useRef"
+	},
+	"useState": {
+		"prefix": "us",
+		"body": [
+			"const [${1:name}, set${1:name}] = useState(${2:default});"
+		],
+		"description": "useState"
+	},
+	"useEffect": {
+		"prefix": "ue",
+		"body": [
+			"useEffect(() => {}, [${1:param}])"
+		],
+		"description": "useEffect"
+	},
+	"setProptype": {
+		"prefix": "pt",
+		"body": [
+			"${1:name}: PropTypes.${2:type}.isRequired,"
+		],
+		"description": "set proptypes"
+	},
+}

@@ -1,0 +1,10 @@
+.storybook
+src
+stories
+tests
+__tests__
+.env
+*.log
+.DS_Store
+babel.config.js
+figma.js
