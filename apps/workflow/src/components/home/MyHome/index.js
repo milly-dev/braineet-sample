@@ -12,6 +12,9 @@ import {
 } from './styles';
 
 const MyHome = ({ data }) => {
+    if (data.data === undefined) {
+        return 'error';
+    }
     const [openModal, setOpenModal] = useState(false);
     const [title, setTitle] = useState(data.data.getProject.title);
 

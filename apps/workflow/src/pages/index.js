@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import MyHome from '../components/home/MyHome';
 import myData from '../data/myData';
@@ -6,19 +6,19 @@ import myData from '../data/myData';
 /* DO NOT TOUCH THIS COMPONENT */
 
 const Home = () => {
-    const [setData] = useState({});
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setData(myData);
-    //     }, 400);
-    // }, []);
+    const [data, setData] = useState({});
+    useEffect(() => {
+        setTimeout(() => {
+            setData(myData);
+        }, 400);
+    }, []);
     return (
         <>
             <Head>
                 <title>Braineet</title>
             </Head>
             <div>
-                <MyHome data={myData} setData={setData} />
+                <MyHome data={data} setData={setData} />
             </div>
         </>
     );
