@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
     ButtonStyled,
@@ -12,16 +12,18 @@ import {
 } from './styles';
 
 const MyHome = ({ data }) => {
-    if (data.data === undefined) {
-        return 'error';
-    }
     const [openModal, setOpenModal] = useState(false);
-    const [title, setTitle] = useState(data.data.getProject.title);
+    const [title, setTitle] = useState(
+        data.data ? data.data.getProject.title : '',
+    );
 
     const change = e => {
-        // data.title = e.target.value;
         setTitle(e.target.value);
     };
+
+    useEffect(() => {
+        setTitle(data.data ? data.data.getProject.title : '');
+    }, [data]);
 
     return (
         <>
